@@ -39,6 +39,8 @@ from detectron2.evaluation import (
 from detectron2.modeling import GeneralizedRCNNWithTTA
 from detectron2.utils.logger import setup_logger
 
+import adet
+
 from adet.data.dataset_mapper import DatasetMapperWithBasis
 from adet.config import get_cfg
 from adet.checkpoint import AdetCheckpointer
@@ -176,6 +178,8 @@ def setup(args):
 
     rank = comm.get_rank()
     setup_logger(cfg.OUTPUT_DIR, distributed_rank=rank, name="adet")
+
+    cfg.MODEL.WEIGHTS = adet.utils.file_io.Detectron2Handler()._get_local_path(cfg.MODEL.WEIGHTS)
 
     return cfg
 
