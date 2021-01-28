@@ -4,7 +4,8 @@ import io
 import logging
 import os
 from fvcore.common.timer import Timer
-from fvcore.common.file_io import PathManager
+# from fvcore.common.file_io import PathManager
+from detectron2.utils.file_io import PathManager
 
 from detectron2.structures import BoxMode
 
