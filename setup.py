@@ -82,6 +82,7 @@ setup(
         "python-Levenshtein",
         "Polygon3",
         "shapely",
+        "iopath"
     ],
     extras_require={"all": ["psutil"]},
     ext_modules=get_extensions(),
