@@ -61,7 +61,7 @@ class Trainer(DefaultTrainer):
                 scheduler=self.scheduler,
             )
 
-        self.checkpointer.path_manager = adet.utils.file_io.Detectron2Handler()
+        self.checkpointer.path_manager.register_handler(adet.utils.file_io.Detectron2Handler())
 
         super().resume_or_load(resume=resume)
 
