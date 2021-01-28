@@ -6,7 +6,7 @@ import numpy as np
 import torch
 # from fvcore.common.file_io import PathManager
 # from detectron2.utils.file_io import PathManager
-from utils.file_io import PathManager
+from adet.utils.file_io import PathManager
 from PIL import Image
 from pycocotools import mask as maskUtils
 
