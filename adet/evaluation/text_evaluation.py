@@ -9,7 +9,8 @@ import os
 import re
 import torch
 from collections import OrderedDict
-from fvcore.common.file_io import PathManager
+# from fvcore.common.file_io import PathManager
+from detectron2.utils.file_io import PathManager
 from pycocotools.coco import COCO
 
 from detectron2.utils import comm
