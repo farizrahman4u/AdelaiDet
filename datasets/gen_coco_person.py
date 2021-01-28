@@ -95,7 +95,7 @@ def gen_coco(phase):
 
 if __name__ == "__main__":
     if not os.path.exists('pic/annotations/'):
-        os.mkdirs('pic/annotations/')
+        os.makedirs('pic/annotations/')
     gen_coco("train")
     gen_coco("val")
     #gen_coco("test")
