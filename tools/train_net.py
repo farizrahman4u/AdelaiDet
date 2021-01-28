@@ -210,7 +210,7 @@ def main(args):
     if args.eval_only:
         model = Trainer.build_model(cfg)
         AdetCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
-            cfg.MODEL.WEIGHTS, resume=args.resume
+            cfg.MODEL.WEIGHTS, resume=False
         )
         res = Trainer.test(cfg, model) # d2 defaults.py
         if comm.is_main_process():
@@ -244,3 +244,4 @@ if __name__ == "__main__":
         args=(args,),
     )
     # wandb.finish()
+    
