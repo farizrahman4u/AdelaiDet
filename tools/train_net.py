@@ -199,7 +199,6 @@ def init_wandb(cfg, args):
                dir='output',
                project='BlendMask',
                resume='auto',
-               group=cfg.TASK,
                )
 
 def main(args):
