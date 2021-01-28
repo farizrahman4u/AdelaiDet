@@ -40,7 +40,6 @@ from detectron2.modeling import GeneralizedRCNNWithTTA
 from detectron2.utils.logger import setup_logger
 
 import adet
-
 from adet.data.dataset_mapper import DatasetMapperWithBasis
 from adet.config import get_cfg
 from adet.checkpoint import AdetCheckpointer
@@ -61,6 +60,9 @@ class Trainer(DefaultTrainer):
                 optimizer=self.optimizer,
                 scheduler=self.scheduler,
             )
+
+        self.checkpointer.path_manager = adet.utils.file_io.Detectron2Handler()
+
         super().resume_or_load(resume=resume)
 
     def train_loop(self, start_iter: int, max_iter: int):
@@ -178,8 +180,6 @@ def setup(args):
 
     rank = comm.get_rank()
     setup_logger(cfg.OUTPUT_DIR, distributed_rank=rank, name="adet")
-
-    cfg.MODEL.WEIGHTS = adet.utils.file_io.Detectron2Handler()._get_local_path(cfg.MODEL.WEIGHTS)
 
     return cfg
 
