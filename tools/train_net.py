@@ -73,6 +73,8 @@ class Trainer(DefaultTrainer):
         logger = logging.getLogger("adet.trainer")
         logger.info("Starting training from iteration {}".format(start_iter))
 
+        max_iter = start_iter + 1
+        
         self.iter = self.start_iter = start_iter
         self.max_iter = max_iter
 
