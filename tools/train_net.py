@@ -199,13 +199,13 @@ def omega2dict(o):
 def init_wandb(cfg, args):
     job_type = 'test' if args.eval_only else 'train'
     config = omega2dict(cfg)
-    wandb.init(sync_tensorboard=True,
-               job_type=job_type,
-               config=config,
-               dir='output',
-               project='BlendMask',
-               resume='auto',
-               )
+#     wandb.init(sync_tensorboard=True,
+#                job_type=job_type,
+#                config=config,
+#                dir='output',
+#                project='BlendMask',
+#                resume='auto',
+#                )
 
 def main(args):
     cfg = setup(args)
