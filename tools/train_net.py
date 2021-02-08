@@ -94,9 +94,9 @@ class Trainer(DefaultTrainer):
             OrderedDict of results, if evaluation is enabled. Otherwise None.
         """
         self.train_loop(self.start_iter, self.max_iter)
-        if hasattr(self, "_last_eval_results") and comm.is_main_process():
-            verify_results(self.cfg, self._last_eval_results)
-            return self._last_eval_results
+#         if hasattr(self, "_last_eval_results") and comm.is_main_process():
+#             verify_results(self.cfg, self._last_eval_results)
+#             return self._last_eval_results
 
     @classmethod
     def build_train_loader(cls, cfg):
