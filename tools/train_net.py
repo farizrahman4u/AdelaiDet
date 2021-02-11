@@ -243,6 +243,7 @@ if __name__ == "__main__":
     print("Command Line Args:", args)
     cfg = setup(args)
     init_wandb(cfg, args)
+    print(wandb.patched)
     launch(
         main,
         args.num_gpus,
