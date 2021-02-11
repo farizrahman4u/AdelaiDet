@@ -212,7 +212,7 @@ def main(args):
 
 #     if comm.is_main_process():
 #         init_wandb(cfg, args)
-
+    print(wandb.patched)
     if args.eval_only:
         model = Trainer.build_model(cfg)
         AdetCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
