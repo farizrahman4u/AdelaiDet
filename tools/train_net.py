@@ -50,8 +50,7 @@ def patch_torch_mp():
     import torch.multiprocessing as mp
     def fork(fn, args=(), nprocs=1, join=True, daemon=False, start_method=None):
         sm = mp.get_start_method()
-        if True or sm not in ("fork", "forkserver"):
-            mp.set_start_method("forkserver", force=True)
+        mp.set_start_method("fork", force=True)
         procs = []
         for i in range(nprocs):
             p = mp.Process(target=fn, args=(i,) + args, daemon=daemon)
