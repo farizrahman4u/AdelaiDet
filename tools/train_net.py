@@ -46,24 +46,6 @@ from adet.checkpoint import AdetCheckpointer
 from adet.evaluation import TextEvaluator
 
 
-def patch_torch_mp():
-    import torch.multiprocessing as mp
-    def fork(fn, args=(), nprocs=1, join=True, daemon=False, start_method=None):
-        sm = mp.get_start_method()
-        mp.set_start_method("fork", force=True)
-        procs = []
-        for i in range(nprocs):
-            p = mp.Process(target=fn, args=(i,) + args, daemon=daemon)
-            procs.append(p)
-            p.start()
-        if join:
-            for p in procs:
-                p.join()
-        mp.set_start_method(sm, force=True)
-    mp.old_spawn = mp.spawn
-    mp.spawn = fork
-
-
 class Trainer(DefaultTrainer):
     """
     This is the same Trainer except that we rewrite the
@@ -257,7 +239,6 @@ def main(args):
 
 
 if __name__ == "__main__":
-    patch_torch_mp()
     args = default_argument_parser().parse_args()
     print("Command Line Args:", args)
     cfg = setup(args)
