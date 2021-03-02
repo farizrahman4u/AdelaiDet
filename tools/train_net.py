@@ -228,9 +228,9 @@ def init_wandb(cfg, args):
 def main(args):
     cfg = setup(args)
 
-#     if comm.is_main_process():
+    if comm.is_main_process():
+        wandb.init()
 #         init_wandb(cfg, args)
-    print(wandb.patched)
     if args.eval_only:
         model = Trainer.build_model(cfg)
         AdetCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
@@ -262,7 +262,6 @@ if __name__ == "__main__":
     print("Command Line Args:", args)
     cfg = setup(args)
     init_wandb(cfg, args)
-    print(wandb.patched)
     launch(
         main,
         args.num_gpus,
